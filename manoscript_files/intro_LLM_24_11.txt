@@ -1,0 +1,18 @@
+Thesis Structure
+0)Intro
+1) LLM
+- transformer architecture and attention
+- tokenization
+- word embedding
+- Training (loss function, ...)
+2) Multimodality
+- Modality bridging
+- training and test datasets
+- ...
+3)TBD
+In recent years, the field of natural language processing (NLP) has witnessed a massive leap forward with the introduction of large language models (LLM). These models removed the lomitations in previously used techniques and obtained groundbreaking results in language understanding and generation. Previous state-of-the-art models for sequence prediction problems, such as recurrent neural networks (RNN), short-long-term-memory or gated RNN, all had considerable limitations. Rnn, for example, are computationally slow and had access to a limited number of previous outputs.
+A major breakthrough was made in 2017, when Google Brain released  the revolutionary "Attention Is All You Need" paper, introducing a new element that would make LLM possible, the transformer. 
+3.1)
+The transformer is an attention based encoder-decoder-based-type architecture. (image)
+Input embedding: the first step is the tokenization of the input. that is to split the input sentence into smaller tokens, each with their respective Input ID. There are various word tokenization methods, such as byte pair ncoding and wordpiece tokenization.. Each ID is then assosiated with an embedding, a trainable vector of fixed lenght, d_model = 512 in the paper.The model will change the vectors to better represent the meaning of each token. After word embedding, follows positional encoding. The transformer architecture, unlike that of RNN or LSTM, does not have an explicit way of representing the order of each word in the input, so a new information needs to be included alongside the embedding vectors. This is done with additional vectors that are summed to the embeddings.Unlke the latters, positional vectors are not trainable parameters, but are computed only once when generating the model. The paper proposes the use of sine and cosine functions to generate the positional encoding. (formula) The idea is that the trigonmetric functions generate a pattern in the arrays that holds informations on relative positions between tokens. The hope is that the model can learn to see this same pattern.
+Following, is the Multi-head attention. Attention is what allows the model to see words that are potentially veryfar away from the current position, solving the issue of limited sight of models like RNNs. 
