@@ -9,10 +9,23 @@ Thesis Structure
 - Modality bridging
 - training and test datasets
 - ...
-3)TBD
-In recent years, the field of natural language processing (NLP) has witnessed a massive leap forward with the introduction of large language models (LLM). These models removed the lomitations in previously used techniques and obtained groundbreaking results in language understanding and generation. Previous state-of-the-art models for sequence prediction problems, such as recurrent neural networks (RNN), short-long-term-memory or gated RNN, all had considerable limitations. Rnn, for example, are computationally slow and had access to a limited number of previous outputs.
-A major breakthrough was made in 2017, when Google Brain released  the revolutionary "Attention Is All You Need" paper, introducing a new element that would make LLM possible, the transformer. 
-3.1)
-The transformer is an attention based encoder-decoder-based-type architecture. (image)
-Input embedding: the first step is the tokenization of the input. that is to split the input sentence into smaller tokens, each with their respective Input ID. There are various word tokenization methods, such as byte pair ncoding and wordpiece tokenization.. Each ID is then assosiated with an embedding, a trainable vector of fixed lenght, d_model = 512 in the paper.The model will change the vectors to better represent the meaning of each token. After word embedding, follows positional encoding. The transformer architecture, unlike that of RNN or LSTM, does not have an explicit way of representing the order of each word in the input, so a new information needs to be included alongside the embedding vectors. This is done with additional vectors that are summed to the embeddings.Unlke the latters, positional vectors are not trainable parameters, but are computed only once when generating the model. The paper proposes the use of sine and cosine functions to generate the positional encoding. (formula) The idea is that the trigonmetric functions generate a pattern in the arrays that holds informations on relative positions between tokens. The hope is that the model can learn to see this same pattern.
-Following, is the Multi-head attention. Attention is what allows the model to see words that are potentially veryfar away from the current position, solving the issue of limited sight of models like RNNs. 
+
+Chapter 3: Large Language Models
+
+In recent years, the field of natural language processing (NLP) has undergone a remarkable transformation with the advent of large language models (LLM). These models have not only overcome the limitations of earlier techniques but have also achieved groundbreaking results in both language understanding and generation. Traditional state-of-the-art models for sequence prediction problems, such as recurrent neural networks (RNNs), short-long-term-memory or gated RNNs, were encumbered by significant computational constraints, with RNNs being notably slow and having restricted access to previous outputs.
+
+A pivotal moment in this evolution occurred in 2017 when Google Brain unveiled the groundbreaking paper "Attention Is All You Need," introducing a fundamental element that paved the way for LLN: the transformer.
+
+3.1 The Transformer Architecture
+
+The transformer, an innovative architectural paradigm in the domain of natural language processing (NLP), represents a milestone that has fundamentally reshaped the landscape of machine comprehension and language generation, marking a departure from conventional models. Transformers have introduced pioneering techniques, empowering machines to discern intricate linguistic nuances and deliver unparalleled performance across a spectrum of NLP tasks. The next sections will analyze each part of the transformers, unraveling how this element is able to generate text in an unseemingly natural manner. (image of transformer architecture)
+
+Input Embedding: The initial step involves the tokenization of the input, wherein the input sentence is broken down into smaller tokens, each assigned a unique Input ID. Various word tokenization methods, such as byte pair encoding and wordpiece tokenization, can be employed. Some method tokenize whole words while others choose to fragment each sentence into subword tokens. A compromise between vocabulary size and flexibility must be made. Each ID is then linked to an embedding—a trainable vector of fixed length, denoted as d_model (d_model = 512 in the paper). The model subsequently adjusts these vectors to more accurately represent the meaning of each token. It has been observed that tokens representing similar concept will also have similar embedding vectors (e.g. summit and peak). 
+
+Following word embedding is the critical step of positional encoding. Unlike RNNs or LSTMs, the transformer architecture lacks an inherent way of representing the sequential order of words in the input. To address this, additional vectors are introduced and summed to the embeddings. Unlike the latter, positional vectors are not trainable parameters but are computed only once during model generation. The paper recommends utilizing sine and cosine functions to generate the positional encoding, creating patterns in the arrays that convey information about the relative positions between tokens.
+
+(Formula for positional encoding and graph)
+
+The underlying idea is that trigonometric functions generate patterns facilitating the model's understanding of relative token positions. This addition aids in capturing the sequential nuances inherent in language.
+
+Continuing, we delve into the Multi-head Attention mechanism. This component is pivotal as it allows the model to consider words located far from the current position, effectively addressing the limited scope observed in models like RNNs...
