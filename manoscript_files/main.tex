@@ -1,6 +1,6 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage{graphicx}
-\usepackage{amsmath}
+%\usepackage{amsmath}
 %\usepackage[french]{babel}
 %\usepackage[T1]{fontenc}
 %%\usepackage[utf8]{inputenc} 
@@ -57,18 +57,24 @@ trainable parameters but are computed only once during model generation. The pap
 to generate the positional encoding, creating patterns in the arrays that convey information about the relative positions between tokens.
 
 \begin{displaymath}
-  \begin{align}
+  %\begin{align}
     PE_{pos,2i} &= \sin(pos/10000^{2i/d_{model}})
   PE_{pos,2i+1} &= \cos(pos/10000^{2i/d_{model}})
-  \end{align} 
+  %\end{align} 
 \end{displaymath}
 The underlying idea is that trigonometric functions generate patterns facilitating the model's understanding of relative token positions. 
 This addition aids in capturing the sequential nuances inherent in language. Continuing, we delve into the Multi-head Attention mechanism.
 This component is pivotal as it allows the model to consider words located far from the current position, effectively addressing the 
-limited scope observed in models like RNNs...
+limited scope observed in models like RNNs.
+
+The next element in the encoder is the multi-head attention. Attention is not a concept that was introduced along with the transformer architecture.
+It is a slightly older concept that goes back to 2014 (Bahdanau \textit{et al} \cite{bahdanau2016neural}). The attention mechanism allows the model
+to focus on different parts of the input sequence dynamically, assigning different weights to different parts of the input sequence when generating 
+each element of the output sequence.
 
 \section{Multimodal Large Language Models}
 \section{Conclusions}
 \section{References}
-
+\bibliographystyle{plain}
+\bibliography{References}
 \end{document}
